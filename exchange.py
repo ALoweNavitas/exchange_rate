@@ -13,7 +13,7 @@ api_key = os.environ.get('access_token_forex_api')
 # API Parameters
 params = {
     'currency' : 'GBPUSD',
-    'start_date' : '2021-01-08',
+    'start_date' : '2022-01-04',
     'api_key' : api_key
 }
 
