@@ -14,7 +14,6 @@ api_key = os.environ.get('access_token_forex_api')
 params = {
     'currency' : 'GBPUSD',
     'start_date' : '2021-01-08',
-    'end_date' : '2022-01-10',
     'api_key' : api_key
 }
 
@@ -26,6 +25,8 @@ df = pd.read_json(response.text)
 flat_df = pd.DataFrame(df.to_records())
 flat_df = flat_df.rename(columns={'index' : 'date'})
 flat_df.to_csv('exchange_values.csv')
+
+print(flat_df.tail())
 
 # Print to terminal
 today_date = flat_df['date'].iloc[-1].strftime('%Y-%m-%d')
@@ -58,7 +59,10 @@ plt.xticks(rotation=90)
 plt.xlabel('Date', fontsize=12)
 plt.ylabel('Exchange Rate', fontsize=12)
 plt.plot(x, y)
+plt.title('Showing exchange rate: GBP to USD', loc='left', fontweight='bold')
 plt.style.use('seaborn')
 plt.tight_layout()
 plt.savefig(f'{today_date}.png')
+
+
 
